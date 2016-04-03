@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-amqp="http://www.springframework.org/schema/integration/amqp"
+	xmlns:int-stream="http://www.springframework.org/schema/integration/stream"
+	xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+	xsi:schemaLocation="http://www.springframework.org/schema/integration/amqp http://www.springframework.org/schema/integration/amqp/spring-integration-amqp-4.2.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.2.xsd
+		http://www.springframework.org/schema/integration/stream http://www.springframework.org/schema/integration/stream/spring-integration-stream-4.2.xsd
+		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.5.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<rabbit:connection-factory id="connectionFactory" host="localhost" publisher-confirms="true" publisher-returns="true" />
+
+	<rabbit:template id="amqpTemplate" connection-factory="connectionFactory" mandatory="true" /> <!-- for nacks -->
+
+	<rabbit:admin connection-factory="connectionFactory" />
+
+	<rabbit:queue name="audit" />
+
+	<int-amqp:inbound-channel-adapter channel="fromRabbit" queue-names="audit" connection-factory="connectionFactory" />
+
+  	<int:channel id="fromRabbit">
+		<int:interceptors>
+			<int:wire-tap channel="loggingChannel" />
+		</int:interceptors>
+	</int:channel>
+
+ 	<int:object-to-string-transformer input-channel="fromRabbit" output-channel="stdOut" />
+
+	<int-stream:stdout-channel-adapter id="stdOut" append-newline="true" />
+
+	<int:logging-channel-adapter id="loggingChannel" log-full-message="true" logger-name="tapInbound" level="INFO" />
+</beans>
