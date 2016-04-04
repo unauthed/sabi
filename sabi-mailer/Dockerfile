@@ -5,7 +5,7 @@
 FROM java:alpine
 MAINTAINER docker@urchinly.uk
 LABEL uk.urchinly.tech=SpringBoot
-LABEL uk.urchinly.tech=sabi
+LABEL uk.urchinly.tier=sabi
 EXPOSE 8080
 COPY ./target/sabi-*.jar app.jar
 RUN /bin/sh -c 'touch /app.jar'
