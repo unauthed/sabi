@@ -43,7 +43,7 @@ Run a module
 
 * `mvn spring-boot:run -DskipTests`
 
-* `mvn clean install && java -jar target/ingest-svc-*.jar`
+* `mvn clean install && java -jar ./target/*.jar`
 
 Create Docker image
 
