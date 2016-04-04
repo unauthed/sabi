@@ -3,28 +3,25 @@
 #
 
 version: "2"
-services:
 
-  ingest:
+services:
+  sabi-mailer:
     image: urchinly/sabi-mailer
     environment:
-     - WABI_SHARE=/data/vault
      - SPRING_PROFILES_ACTIVE=prod
-     - SPRING_DATA_MONGODB_URI=mongodb://wabi_mongo_1/wabi
      - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
     ports:
-     - "7081:8081"
+     - "7081:8080"
     volumes:
      - /tmp
-     - shared-volume:/data/vault
     networks:
-     - front-tier
+     - sabi-tier
 
 volumes:
   shared-volume:
     driver: local
 
 networks:
-  front-tier:
+  sabi-tier:
     driver: bridge
 

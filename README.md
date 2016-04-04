@@ -4,7 +4,7 @@ Wabi and sabi are two of the key Japanese aesthetic concepts. Their definitions 
 
 Open source platform for open access publishing of great simplicity and beauty.
 
-## Wabi [![Build Status](https://travis-ci.org/urchinly/wabi.svg?branch=master)](https://travis-ci.org/urchinly/wabi)
+## [Wabi](https://github.com/urchinly/wabi) [![Build Status](https://travis-ci.org/urchinly/wabi.svg?branch=master)](https://travis-ci.org/urchinly/wabi)
 
 Wabi means things that are fresh and simple. It denotes simplicity and quietude, and also incorporates rustic beauty. It includes both that which is made by nature, and that which is made by man. It also can mean an accidental or happenstance element (or perhaps even a small flaw) which gives elegance and uniqueness to the whole, such as the pattern made by a flowing glaze on a ceramic object.
 
@@ -18,8 +18,7 @@ The administration front-end for the WABI-SABI publishing platform.
 
 ### Build and Run
 
-First we build the Docker containers for our third-party services RabbitMQ, ElasticSearch and MongoDB. Next we build the platform micro-services as Docker containers.
-To start the application we use Docker Compose. Test the application by uploading a file to _http://localhost:8081/upload_ and verify with downloading the file from _http:localhost:8082/assets_.
+Every module can be build and run with Maven `mvn clean spring-boot:run`, further every module has a `build.sh` script for creating and running the application in a Docker container.
 
 - Maven 3.2
 - Java 8
@@ -28,7 +27,6 @@ To start the application we use Docker Compose. Test the application by uploadin
 ```
 mvn clean install
 mvn spring-boot:run
-mvn docker:build
 ```
 
 ### Maven Tips
@@ -44,10 +42,6 @@ Run a module
 * `mvn spring-boot:run -DskipTests`
 
 * `mvn clean install && java -jar ./target/*.jar`
-
-Create Docker image
-
-* `mvn clean install -P prod && mvn docker:build`
 
 Check and format licence headers across the project
 
@@ -67,8 +61,8 @@ Check for latest versions
 
 Run one module
 
-* `docker run -d -e "SPRING_PROFILES_ACTIVE=prod" -p 8088:8088 --name search -h search urchinly/search-svc`
-* `docker exec -it search /bin/sh`
+* `docker run -d -e "SPRING_PROFILES_ACTIVE=prod" -p 8088:8088 --name sabi-x -h sabi-x urchinly/sabi-x`
+* `docker exec -it sabi-x /bin/sh`
 
 Run all modules
 

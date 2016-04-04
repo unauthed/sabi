@@ -5,10 +5,10 @@
 
 	<groupId>uk.urchinly.sabi</groupId>
 	<artifactId>sabi-mailer</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Sabi Mailer</name>
-	<description>Service that reads of a message broker and sends emails. Part of the WABI-SABI platform.</description>
+	<description>Service that sends emails read of a message broker. Part of the WABI-SABI platform.</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

@@ -1,0 +1,28 @@
+#
+# Copyright (C) 2016 Urchinly <wabi@urchinly.uk>
+#
+
+info:
+  build:
+    artifact: "@project.artifactId@"
+    name: "@project.name@"
+    description: "@project.description@"
+    version: "@project.version@"
+
+server:
+  port: 8080
+
+spring:
+  main:
+    banner_mode: "off"
+  jmx:
+    enabled: false
+
+endpoints:
+  health:
+    sensitive: false
+  restart:
+    enabled: false
+  shutdown:
+    enabled: false
+
