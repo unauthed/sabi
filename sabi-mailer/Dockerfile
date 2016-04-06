@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 Urchinly <wabi@urchinly.uk>
+# Copyright (C) 2016 Urchinly <wabi-sabi@urchinly.uk>
 #
 
 FROM java:alpine
