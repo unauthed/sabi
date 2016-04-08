@@ -1,5 +1,6 @@
-Wabi-Sabi open access publishing of great simplicity and beauty.
-Copyright (C) ${year} ${owner} <${email}>
+Wabi-Sabi DAM solution
+Open source Digital Asset Management platform of great simplicity and beauty.
+Copyright (C) 2016 Urchinly <wabi-sabi@urchinly.uk>
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU Affero General Public License as
