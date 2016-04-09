@@ -16,6 +16,7 @@
 	</prerequisites>
 
 	<modules>
+		<module>sabi-events</module>
 		<module>sabi-mailer</module>
 	</modules>
 

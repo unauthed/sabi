@@ -10,7 +10,7 @@ info:
     version: "@project.version@"
 
 server:
-  port: 7082
+  port: 7081
 
 spring:
   main:
