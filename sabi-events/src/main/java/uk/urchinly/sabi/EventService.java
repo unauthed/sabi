@@ -11,11 +11,10 @@ import org.springframework.stereotype.Service;
 public class EventService {
 
 	@Autowired
-	private SimpMessagingTemplate template;
+	private SimpMessagingTemplate simpMessagingTemplate;
 
-	@Scheduled(fixedRate = 5000)
-	public void trigger() {
-		this.template.convertAndSend("/topic/events", "Date: " + new Date());
+	@Scheduled(fixedRate = 10000)
+	public void event() {
+		this.simpMessagingTemplate.convertAndSend("/topic/events", "{\"date\": \"" + new Date() + "\"}");
 	}
-
 }
