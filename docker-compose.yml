@@ -5,35 +5,22 @@
 version: "2"
 
 services:
-  sabi-events:
+  events:
     image: urchinly/sabi-events
     environment:
      - SPRING_PROFILES_ACTIVE=prod
      - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
     ports:
-     - "7081:8080"
+     - "7081:7081"
     volumes:
      - /tmp
-    networks:
-     - sabi-tier
 
-  sabi-mailer:
+  mailer:
     image: urchinly/sabi-mailer
     environment:
      - SPRING_PROFILES_ACTIVE=prod
      - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
     ports:
-     - "7082:8080"
+     - "7082:7082"
     volumes:
      - /tmp
-    networks:
-     - sabi-tier
-
-volumes:
-  shared-volume:
-    driver: local
-
-networks:
-  sabi-tier:
-    driver: bridge
-
