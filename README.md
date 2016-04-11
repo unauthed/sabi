@@ -22,12 +22,16 @@ Every module can be build and run with Maven `mvn clean spring-boot:run`, furthe
 
 - Maven 3.2
 - Java 8
-- Docker 10
+- Docker 1.10
 
 ```
 mvn clean install
 mvn spring-boot:run
 ```
+
+### Run sabi images in the Docker Cloud
+
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
 
 ### Maven Tips
 
