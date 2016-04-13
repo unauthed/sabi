@@ -19,7 +19,7 @@ services:
     image: urchinly/sabi-mailer
     environment:
      - SPRING_PROFILES_ACTIVE=prod
-     - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1,wabi_rabbitmq_2,wabi_rabbitmq_3
+     - SPRING_RABBITMQ_ADDRESSES=wabi_rabbitmq_1
     ports:
      - "7082:7082"
     volumes:

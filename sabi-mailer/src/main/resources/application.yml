@@ -28,3 +28,5 @@ endpoints:
   shutdown:
     enabled: false
 
+rabbitmq:
+  host: ${SPRING_RABBITMQ_ADDRESSES:localhost}
