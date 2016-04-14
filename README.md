@@ -29,10 +29,6 @@ mvn clean install
 mvn spring-boot:run
 ```
 
-### Run sabi images in the Docker Cloud
-
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
-
 ### Maven Tips
 
 Build a module
