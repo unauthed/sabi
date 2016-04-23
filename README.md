@@ -26,10 +26,12 @@ The Sabi modules require a running Wabi application, please see the Wabi project
 - Docker Compose 1.7.0
 
 ```
-./haproxy/build.sh
-./sabi-portal/build.sh
-
 mvn clean install -P prod
+
+./haproxy/build.sh
+./sabi-events/build.sh
+./sabi-mailer/build.sh
+./sabi-portal/build.sh
 
 docker-compose up
 
