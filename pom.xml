@@ -39,6 +39,9 @@
 						<exclude>**/*.md</exclude>
 						<exclude>**/*.xml</exclude>
 						<exclude>**/*.jmx</exclude>
+                        <exclude>**/*.cfg</exclude>
+						<exclude>**/.editorconfig</exclude>
+						<exclude>**/.dockerignore</exclude>						
 						<exclude>**/.springBeans</exclude>
 						<exclude>**/.gitignore</exclude>
 						<exclude>**/gitkeep</exclude>
@@ -47,11 +50,11 @@
 						<exclude>**/LICENSE.txt</exclude>
 						<exclude>**/NOTICE.txt</exclude>
 						<exclude>**/src/deb/**</exclude>
-						<exclude>**/solr/wabi_core/**</exclude>
 						<exclude>**/src/main/license/**</exclude>
 						<exclude>**/src/main/assembly/**</exclude>
 						<exclude>**/src/main/webapp/resources/**</exclude>
 						<exclude>**/src/test/resources/**</exclude>
+						<exclude>**/sabi-portal/html/lib/**</exclude>
 					</excludes>
 				</configuration>
 				<executions>

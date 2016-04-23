@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #
 # Wabi-Sabi DAM solution
 # Open source Digital Asset Management platform of great simplicity and beauty.
@@ -17,11 +18,6 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-FROM java:alpine
-MAINTAINER docker@urchinly.uk
-LABEL uk.urchinly.tech=SpringBoot
-LABEL uk.urchinly.tier=sabi
-EXPOSE 7081
-COPY ./target/sabi-*.jar app.jar
-RUN /bin/sh -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+
+docker run -it -p 9080:80 -v $PWD/html:/usr/share/nginx/html --memory 500m --rm --net=wabi_wabi-tier --name sabi-portal urchinly/sabi-portal
+
