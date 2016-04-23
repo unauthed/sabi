@@ -84,7 +84,7 @@ Check for latest versions
 
 Run one module
 
-* `docker run -d -e "SPRING_PROFILES_ACTIVE=prod" -p 7088:7088 --rm --net=wabi_sabi-tier --name sabi-x -h sabi-x urchinly/sabi-x`
+* `docker run -d -e "SPRING_PROFILES_ACTIVE=prod" -p 7088:7088 --rm --net=wabi_wabi-tier --name sabi-x -h sabi-x urchinly/sabi-x`
 * `docker exec -it sabi-x /bin/sh`
 
 Run all modules
