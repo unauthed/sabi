@@ -17,11 +17,11 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-FROM java:alpine
+# Note the elasticsearch version must match the spring data version!
+
+FROM haproxy:1.6.4-alpine
 MAINTAINER docker@urchinly.uk
-LABEL uk.urchinly.tech=SpringBoot
+LABEL uk.urchinly.tech=web
 LABEL uk.urchinly.tier=sabi
-EXPOSE 7081
-COPY ./target/sabi-*.jar app.jar
-RUN /bin/sh -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+EXPOSE 80 443
+COPY config /usr/local/etc/haproxy

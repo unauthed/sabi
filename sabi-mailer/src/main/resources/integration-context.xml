@@ -10,7 +10,7 @@
 		http://www.springframework.org/schema/rabbit http://www.springframework.org/schema/rabbit/spring-rabbit-1.5.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <rabbit:connection-factory id="connectionFactory" host="${rabbitmq.host}" publisher-confirms="true" publisher-returns="true" />
+  <rabbit:connection-factory id="connectionFactory" addresses="${rabbitmq.addresses}" publisher-confirms="true" publisher-returns="true" username="guest" password="guest" />
 
   <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" mandatory="true" /> <!-- for nacks -->
 
@@ -18,7 +18,7 @@
 
   <rabbit:queue name="audit" />
 
-  <int-amqp:inbound-channel-adapter channel="fromRabbit" queue-names="audit" connection-factory="connectionFactory" />
+  <int-amqp:inbound-channel-adapter channel="fromRabbit" queue-names="audit" missing-queues-fatal="false" connection-factory="connectionFactory" />
 
   <int:channel id="fromRabbit">
     <int:interceptors>

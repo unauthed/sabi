@@ -1,4 +1,4 @@
-/**
+/*
  * Wabi-Sabi DAM solution
  * Open source Digital Asset Management platform of great simplicity and beauty.
  * Copyright (C) 2016 Urchinly <wabi-sabi@urchinly.uk>
@@ -16,23 +16,27 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package uk.urchinly.sabi;
 
-import java.util.Date;
+$(document).ready(function() {
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
+  var events = [];
+  var template = $.templates("#eventTemplate");
+  template.link("#eventsContainer", events);
 
-@Service
-public class EventService {
+  function connect() {
+    var socket = new SockJS("//" + location.hostname + ':7081/stomp');
+    stompClient = Stomp.over(socket);
+    stompClient.connect({}, function(frame) {
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/events', function(event){
+          if(events.length > 9) {
+            $.observable(events).remove(0);
+          }
 
-	@Autowired
-	private SimpMessagingTemplate simpMessagingTemplate;
+          $.observable(events).insert(JSON.parse(event.body));
+        });
+    });
+  }
 
-	@Scheduled(fixedRate = 10000)
-	public void event() {
-		this.simpMessagingTemplate.convertAndSend("/topic/events", "{\"date\": \"" + new Date() + "\"}");
-	}
-}
+  connect();
+});

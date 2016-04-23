@@ -17,11 +17,13 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-FROM java:alpine
+FROM nginx:alpine
 MAINTAINER docker@urchinly.uk
-LABEL uk.urchinly.tech=SpringBoot
+LABEL uk.urchinly.tech=web
 LABEL uk.urchinly.tier=sabi
-EXPOSE 7081
-COPY ./target/sabi-*.jar app.jar
-RUN /bin/sh -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+RUN ["mkdir", "-p", "/data/vault"]
+VOLUME ["/data/vault", "/tmp"]
+EXPOSE 80
+EXPOSE 443
+COPY html/ /usr/share/nginx/html
+

@@ -18,16 +18,40 @@ Sabi modules form the custom components of our digital asset management solution
 
 ### Build and Run
 
-Every module can be build and run with Maven `mvn clean spring-boot:run`, further every module has a `build.sh` script for creating and running the application in a Docker container.
+The Sabi modules require a running Wabi application, please the Wabi project for detailed instructions on how to start the Docker stack. Every Sabi module can be build and run with Maven `mvn clean spring-boot:run`, further every module has a _build.sh_ script for creating and running the module in a Docker container.
 
 - Maven 3.2
 - Java 8
 - Docker 1.10
+- Docker Compose 1.7.0
 
 ```
-mvn clean install
-mvn spring-boot:run
+./haproxy/build.sh
+./sabi-portal/build.sh
+
+mvn clean install -P prod
+
+docker-compose up
+
+http://localhost:8888/
+
+docker-compose scale portal=2
+docker-compose restart haproxy
+http://localhost:8888/stats
+
 ```
+
+## Apache HTTP server benchmarking tool
+
+We would love to hear from you, create your own [benchmark](http://httpd.apache.org/docs/2.2/programs/ab.html) and share the results.
+
+```
+sudo apt-get install -y apache2-utils
+./ab-benchmark.sh
+```
+### Run wabi images in the Docker Cloud
+
+[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
 
 ### Maven Tips
 
@@ -61,7 +85,7 @@ Check for latest versions
 
 Run one module
 
-* `docker run -d -e "SPRING_PROFILES_ACTIVE=prod" -p 8088:8088 --name sabi-x -h sabi-x urchinly/sabi-x`
+* `docker run -d -e "SPRING_PROFILES_ACTIVE=prod" -p 7088:7088 --rm --net=wabi_sabi-tier --name sabi-x -h sabi-x urchinly/sabi-x`
 * `docker exec -it sabi-x /bin/sh`
 
 Run all modules
