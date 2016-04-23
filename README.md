@@ -18,7 +18,7 @@ Sabi modules form the custom components of our digital asset management solution
 
 ### Build and Run
 
-The Sabi modules require a running Wabi application, please the Wabi project for detailed instructions on how to start the Docker stack. Every Sabi module can be build and run with Maven `mvn clean spring-boot:run`, further every module has a _build.sh_ script for creating and running the module in a Docker container.
+The Sabi modules require a running Wabi application, please see the Wabi project for detailed instructions on how to start the Docker stack. Every Sabi module can be build and run with Maven `mvn clean spring-boot:run`, further every module has a `build.sh` script for creating and running the module in a Docker container.
 
 - Maven 3.2
 - Java 8
@@ -49,9 +49,6 @@ We would love to hear from you, create your own [benchmark](http://httpd.apache.
 sudo apt-get install -y apache2-utils
 ./ab-benchmark.sh
 ```
-### Run wabi images in the Docker Cloud
-
-[![Deploy to Docker Cloud](https://files.cloud.docker.com/images/deploy-to-dockercloud.svg)](https://cloud.docker.com/stack/deploy/)
 
 ### Maven Tips
 
